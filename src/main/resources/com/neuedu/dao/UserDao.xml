@@ -6,6 +6,68 @@
     <select id="getLists" resultType="com.neuedu.pojo.User" >
         select * from user
     </select>
+
+    <insert id="insertOne">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username!=null">
+                username,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="tel!=null">
+                tel,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="tel!=null">
+                #{tel},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delOne">
+        delete from user
+        <where>
+            <if test="username!=null">
+                and username=#{username}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+            <if test="tel!=null">
+                and tel=#{tel}
+            </if>
+        </where>
+    </delete>
+
+
+    <update id="updateOne">
+        update  user
+        <set>
+            <trim suffixOverrides=",">
+                <if test="username!=null">
+                    username=#{username},
+                </if>
+                <if test="password!=null">
+                    password=#{password},
+                </if>
+                <if test="tel!=null">
+                    tel=#{tel},
+                </if>
+            </trim>
+        </set>
+        <where>
+            id=1
+        </where>
+    </update>
 </mapper>
 
 

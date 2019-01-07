@@ -16,4 +16,19 @@ public class UserServiceImpl implements IUserService {
     public List<User> getLists() {
         return dao.getLists();
     }
+
+    @Override
+    public int insertOne(User user) {
+        return dao.insertOne(user);
+    }
+
+    @Override
+    public int updateOne(User user) {
+        return dao.updateOne(user);
+    }
+
+    @Override
+    public int delOne(User user) {
+        return dao.delOne(user);
+    }
 }
