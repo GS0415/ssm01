@@ -7,28 +7,38 @@
         select * from user
     </select>
 
+    <select id="getOne" resultType="com.neuedu.pojo.User" >
+        select * from user where username=#{userName}
+    </select>
+
     <insert id="insertOne">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="username!=null">
+            <if test="userName!=null">
                 username,
             </if>
-            <if test="password!=null">
+            <if test="passWord!=null">
                 password,
             </if>
             <if test="tel!=null">
                 tel,
             </if>
+            <if test="sex!=null">
+                sex,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
-            <if test="username!=null">
-                #{username},
+            <if test="userName!=null">
+                #{userName},
             </if>
-            <if test="password!=null">
-                #{password},
+            <if test="passWord!=null">
+                #{passWord},
             </if>
             <if test="tel!=null">
                 #{tel},
+            </if>
+            <if test="sex!=null">
+                #{sex},
             </if>
         </trim>
     </insert>
@@ -36,36 +46,48 @@
     <delete id="delOne">
         delete from user
         <where>
-            <if test="username!=null">
-                and username=#{username}
+            <if test="userName!=null">
+                and username=#{userName}
             </if>
-            <if test="password!=null">
-                and password=#{password}
+            <if test="passWord!=null">
+                and password=#{passWord}
             </if>
             <if test="tel!=null">
                 and tel=#{tel}
             </if>
+            <if test="sex!=null">
+                and sex=#{sex}
+            </if>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
         </where>
     </delete>
 
+    <select id="getUser" resultType="com.neuedu.pojo.User">
+        select * from user where id=#{id};
+    </select>
 
     <update id="updateOne">
         update  user
         <set>
             <trim suffixOverrides=",">
-                <if test="username!=null">
-                    username=#{username},
+                <if test="userName!=null">
+                    username=#{userName},
                 </if>
-                <if test="password!=null">
-                    password=#{password},
+                <if test="passWord!=null">
+                    password=#{passWord},
                 </if>
                 <if test="tel!=null">
                     tel=#{tel},
                 </if>
+                <if test="sex!=null">
+                    sex=#{sex},
+                </if>
             </trim>
         </set>
         <where>
-            id=1
+            id=#{id}
         </where>
     </update>
 </mapper>

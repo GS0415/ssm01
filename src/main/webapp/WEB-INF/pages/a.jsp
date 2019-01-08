@@ -1,16 +1,37 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2019/1/7
-  Time: 18:37
+  Date: 2019/1/4
+  Time: 11:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
 </head>
 <body>
-${lists}
+<a href="add.do">添加</a>
+<table>
+    <tr>
+        <th hidden="hidden">id</th>
+        <th>名字</th>
+        <th>电话</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    <c:forEach items="${lists}" var="user">
+        <tr>
+            <td hidden="hidden">${user.id}</td>
+            <td>${user.userName}</td>
+            <td>${user.tel}</td>
+            <td>${user.sex}</td>
+            <td><a href="delete.do?id=${user.id}">删除</a>
+                <a href="update.do?id=${user.id}">修改</a>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
+
 </body>
 </html>

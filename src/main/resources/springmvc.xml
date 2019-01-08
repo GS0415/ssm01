@@ -20,6 +20,13 @@
         http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 ">
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**/*.do"/>
+            <mvc:exclude-mapping path="/*login.do"/>
+            <bean class="com.neuedu.web.Interceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.neuedu.web"/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

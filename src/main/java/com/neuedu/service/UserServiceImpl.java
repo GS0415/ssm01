@@ -22,6 +22,7 @@ public class UserServiceImpl implements IUserService {
         return dao.insertOne(user);
     }
 
+
     @Override
     public int updateOne(User user) {
         return dao.updateOne(user);
@@ -31,4 +32,15 @@ public class UserServiceImpl implements IUserService {
     public int delOne(User user) {
         return dao.delOne(user);
     }
+
+    @Override
+    public User getUser(int id) {
+        return dao.getUser(id);
+    }
+
+    @Override
+    public User getOne(String userName) {
+        return dao.getOne(userName);
+    }
+
 }
