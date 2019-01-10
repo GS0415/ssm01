@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,18 @@ public class WebTest {
     @RequestMapping("/login.do")
     public String login() {
         return "login";
+    }
+
+
+    @RequestMapping("/register.do")
+    public String register() {
+        return "register";
+    }
+
+    @ResponseBody
+    @RequestMapping("/doregister.do")
+    public String doregister() {
+        return "register";
     }
 
     @RequestMapping("/dologin.do")
@@ -47,7 +60,6 @@ public class WebTest {
     @RequestMapping("/a.do")
     public String a(ModelMap map) {
         List<User> lists = service.getLists();
-
         map.put("lists", lists);
         return "a";
     }

@@ -11,6 +11,4 @@ public class User {
     private String sex;
     private String photo;
     private String quan;
-
-
 }
